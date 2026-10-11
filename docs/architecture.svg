@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="560" viewBox="0 0 1100 560" role="img" aria-labelledby="title desc">
+  <title id="title">CPU looped flow demo architecture</title>
+  <desc id="desc">A deterministic Sudoku dataset feeds a stateful categorical denoiser. Euler probability-flow inference is evaluated at several step counts and written to metrics artifacts.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#486581"/>
+    </marker>
+    <style>
+      .box { fill: #f0f4f8; stroke: #486581; stroke-width: 2; rx: 12; }
+      .accent { fill: #d9f0e5; stroke: #0b6e4f; stroke-width: 2; rx: 12; }
+      .output { fill: #fff3bf; stroke: #b7791f; stroke-width: 2; rx: 12; }
+      .label { font: 600 18px sans-serif; fill: #102a43; }
+      .small { font: 14px sans-serif; fill: #334e68; }
+      .arrow { stroke: #486581; stroke-width: 2.5; marker-end: url(#arrow); fill: none; }
+    </style>
+  </defs>
+  <rect width="1100" height="560" fill="#ffffff"/>
+  <text x="550" y="42" text-anchor="middle" class="label" font-size="24">CPU-only inference-time scaling demo</text>
+
+  <rect x="50" y="100" width="215" height="140" class="box"/>
+  <text x="157" y="135" text-anchor="middle" class="label">Deterministic data</text>
+  <text x="157" y="165" text-anchor="middle" class="small">4x4 Sudoku puzzles</text>
+  <text x="157" y="188" text-anchor="middle" class="small">valid completion targets</text>
+  <text x="157" y="211" text-anchor="middle" class="small">seeded train/test split</text>
+
+  <rect x="330" y="100" width="245" height="140" class="accent"/>
+  <text x="452" y="135" text-anchor="middle" class="label">Categorical denoiser</text>
+  <text x="452" y="165" text-anchor="middle" class="small">small CPU MLP</text>
+  <text x="452" y="188" text-anchor="middle" class="small">optional recurrent state</text>
+  <text x="452" y="211" text-anchor="middle" class="small">trained from scratch</text>
+
+  <rect x="640" y="100" width="235" height="140" class="accent"/>
+  <text x="757" y="135" text-anchor="middle" class="label">Flow solver</text>
+  <text x="757" y="165" text-anchor="middle" class="small">Euler probability flow</text>
+  <text x="757" y="188" text-anchor="middle" class="small">4 / 8 / 16 / 32 steps</text>
+  <text x="757" y="211" text-anchor="middle" class="small">model calls counted</text>
+
+  <rect x="930" y="100" width="125" height="140" class="output"/>
+  <text x="992" y="135" text-anchor="middle" class="label">Metrics</text>
+  <text x="992" y="165" text-anchor="middle" class="small">exact</text>
+  <text x="992" y="188" text-anchor="middle" class="small">cell</text>
+  <text x="992" y="211" text-anchor="middle" class="small">latency</text>
+
+  <path d="M265 170 H330" class="arrow"/>
+  <path d="M575 170 H640" class="arrow"/>
+  <path d="M875 170 H930" class="arrow"/>
+
+  <rect x="145" y="335" width="260" height="115" class="box"/>
+  <text x="275" y="370" text-anchor="middle" class="label">Training interpolant</text>
+  <text x="275" y="400" text-anchor="middle" class="small">ordered times, detached</text>
+  <text x="275" y="423" text-anchor="middle" class="small">state between updates</text>
+
+  <rect x="500" y="335" width="260" height="115" class="box"/>
+  <text x="630" y="370" text-anchor="middle" class="label">Baseline</text>
+  <text x="630" y="400" text-anchor="middle" class="small">same task and data</text>
+  <text x="630" y="423" text-anchor="middle" class="small">no recurrent state</text>
+
+  <rect x="855" y="335" width="180" height="115" class="output"/>
+  <text x="945" y="370" text-anchor="middle" class="label">Artifacts</text>
+  <text x="945" y="400" text-anchor="middle" class="small">JSON / CSV / SVG</text>
+  <text x="945" y="423" text-anchor="middle" class="small">only after run</text>
+
+  <path d="M452 240 V292 H275 V335" class="arrow"/>
+  <path d="M452 240 V292 H630 V335" class="arrow"/>
+  <path d="M757 240 V292 H945 V335" class="arrow"/>
+</svg>

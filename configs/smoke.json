@@ -1,0 +1,23 @@
+{
+  "seed": 1729,
+  "dataset": {
+    "train_size": 48,
+    "test_size": 24,
+    "min_clues": 8,
+    "max_clues": 10
+  },
+  "training": {
+    "epochs": 18,
+    "times": 5,
+    "learning_rate": 0.08
+  },
+  "model": {
+    "hidden_size": 24,
+    "candidate_bias": 1.5
+  },
+  "baseline": {
+    "hidden_size": 24,
+    "candidate_bias": 1.5
+  },
+  "inference_steps": [4, 8, 16, 32]
+}
