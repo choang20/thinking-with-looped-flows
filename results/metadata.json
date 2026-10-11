@@ -1,0 +1,42 @@
+{
+  "dataset_sizes": {
+    "test": 240,
+    "train": 800,
+    "validation": 160
+  },
+  "evaluation_steps": [
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "final_training_loss": {
+    "looped-flow": 0.3877245271753581,
+    "no-state-flow": 0.39712939853393747
+  },
+  "model": {
+    "hidden": 96,
+    "length": 16,
+    "use_state": true,
+    "vocab": 4
+  },
+  "notes": [
+    "All data is generated locally; no cloud or downloaded dataset is used.",
+    "Latency depends on the CPU and Python/NumPy build.",
+    "The Qwen adapter is optional and is not used for the core result."
+  ],
+  "numpy": "2.4.2",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "seed": 7,
+  "task": "unique 4x4 Sudoku completion",
+  "training": {
+    "batch_size": 64,
+    "flow_steps": 4,
+    "learning_rate": 0.0003,
+    "seed": 7,
+    "sigma": 1.0,
+    "steps": 1200
+  }
+}

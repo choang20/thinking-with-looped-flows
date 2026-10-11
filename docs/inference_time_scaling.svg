@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-labelledby="title desc">
+  <title id="title">Inference-time scaling in a looped probability flow</title>
+  <desc id="desc">The same denoiser is called repeatedly while a noisy categorical state moves toward a solved grid. More calls spend more inference compute.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7fafc"/>
+      <stop offset="1" stop-color="#eef2ff"/>
+    </linearGradient>
+    <linearGradient id="flow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#c7d2fe"/>
+      <stop offset="1" stop-color="#86efac"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L10,3 L0,6 Z" fill="#334155"/>
+    </marker>
+    <style>
+      .label { font: 600 18px system-ui, sans-serif; fill: #0f172a; }
+      .small { font: 15px system-ui, sans-serif; fill: #475569; }
+      .box { stroke: #334155; stroke-width: 2; rx: 16; }
+      .arrow { stroke: #334155; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1200" height="560" fill="url(#bg)"/>
+  <text x="48" y="50" class="label" font-size="27">Inference-time scaling: spend more compute on the same trained weights</text>
+  <text x="48" y="80" class="small">One call is one refinement step. A finer time grid means more calls before the final answer.</text>
+
+  <rect x="55" y="185" width="170" height="105" fill="#e0e7ff" class="box"/>
+  <text x="140" y="220" text-anchor="middle" class="label">Noise x₀</text>
+  <text x="140" y="248" text-anchor="middle" class="small">soft token grid</text>
+  <text x="140" y="272" text-anchor="middle" class="small">random seed</text>
+
+  <path d="M225 237 H290" class="arrow"/>
+  <rect x="290" y="150" width="275" height="175" fill="#fff" class="box"/>
+  <text x="427" y="185" text-anchor="middle" class="label">Stateful denoiser</text>
+  <text x="427" y="218" text-anchor="middle" class="small">input: xₜ, puzzle c, time t, state zₜ</text>
+  <rect x="334" y="243" width="185" height="48" fill="#fef3c7" stroke="#b45309" stroke-width="2" rx="10"/>
+  <text x="427" y="273" text-anchor="middle" class="small">x̂ₜ + next state zₜ₊₁</text>
+
+  <path d="M565 237 H635" class="arrow"/>
+  <rect x="635" y="185" width="215" height="105" fill="#dcfce7" class="box"/>
+  <text x="742" y="220" text-anchor="middle" class="label">Euler update</text>
+  <text x="742" y="248" text-anchor="middle" class="small">xₜ₊Δ = xₜ + Δ·(x̂ₜ−xₜ)/(1−t)</text>
+  <text x="742" y="272" text-anchor="middle" class="small">then repeat</text>
+
+  <path d="M850 237 H930" class="arrow"/>
+  <rect x="930" y="185" width="215" height="105" fill="#bbf7d0" class="box"/>
+  <text x="1037" y="220" text-anchor="middle" class="label">Solved grid</text>
+  <text x="1037" y="248" text-anchor="middle" class="small">argmax at t = 1</text>
+  <text x="1037" y="272" text-anchor="middle" class="small">exact verification</text>
+
+  <path d="M742 305 C742 390 427 390 427 325" class="arrow"/>
+  <text x="585" y="425" text-anchor="middle" class="small">same loop, more times = more inference computation</text>
+
+  <rect x="105" y="470" width="310" height="52" fill="#fff" stroke="#64748b" stroke-width="2" rx="12"/>
+  <text x="260" y="502" text-anchor="middle" class="label">n = 4 calls: coarse grid</text>
+  <rect x="445" y="470" width="310" height="52" fill="#fff" stroke="#64748b" stroke-width="2" rx="12"/>
+  <text x="600" y="502" text-anchor="middle" class="label">n = 16 calls: finer grid</text>
+  <rect x="785" y="470" width="310" height="52" fill="#fff" stroke="#64748b" stroke-width="2" rx="12"/>
+  <text x="940" y="502" text-anchor="middle" class="label">n = 32 calls: longer thinking</text>
+</svg>
